@@ -615,7 +615,8 @@ task aggregate_metagenomics_reports {
 
 task MultiQC {
   input {
-    Array[File]    input_files
+    Array[File]?    input_files
+    Array[Array[File]]?    input_file_list
 
     String?        title
     String?        comment
@@ -654,10 +655,14 @@ task MultiQC {
   String report_filename = if (defined(file_name)) then basename(select_first([file_name]), ".html") else "multiqc"
   Int disk_size = 375
 
+  Array[File] input_file_list_flat=flatten(input_file_list)
+
   command {
       set -ex -o pipefail
 
       echo "${sep='\n' input_files}" > input-filenames.txt
+      echo "" >> input-filenames.txt
+      echo "${sep='\n' input_file_list_flat}" >> input-filenames.txt}
       echo "" >> input-filenames.txt
 
       multiqc \

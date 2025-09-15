@@ -10,11 +10,13 @@ workflow multiqc_only {
     }
     input {
         Array[File] input_files
+        Array[Array[File]] input_file_list
         String      file_name = "multiqc-raw.html"
     }
     call reports.MultiQC {
         input:
             input_files = input_files,
+            input_file_list = input_file_list,
             file_name = file_name
     }
     output {
