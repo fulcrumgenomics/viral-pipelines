@@ -655,7 +655,7 @@ task MultiQC {
   String report_filename = if (defined(file_name)) then basename(select_first([file_name]), ".html") else "multiqc"
   Int disk_size = 375
 
-  Array[File] input_file_list_flat = select_first([input_file_list,[[]]])
+  Array[File] input_file_list_flat = flatten(select_first([input_file_list,[[]]]))
 
   command {
       set -ex -o pipefail
