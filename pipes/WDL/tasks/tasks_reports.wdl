@@ -662,7 +662,7 @@ task MultiQC {
 
       echo "${sep='\n' input_files}" > input-filenames.txt
       echo "" >> input-filenames.txt
-      echo "${sep='\n' input_file_list_flat}" >> input-filenames.txt}
+      echo "${sep='\n' input_file_list_flat}" >> input-filenames.txt
       echo "" >> input-filenames.txt
 
       multiqc \
