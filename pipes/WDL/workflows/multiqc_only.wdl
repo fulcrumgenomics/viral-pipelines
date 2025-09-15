@@ -19,5 +19,6 @@ workflow multiqc_only {
     }
     output {
         File multiqc = MultiQC.multiqc_report
+        File multiqc_tarball = MultiQC.multiqc_tarball
     }
 }
