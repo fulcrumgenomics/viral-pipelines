@@ -644,7 +644,7 @@ task MultiQC {
     File?          config  # directory
     String?        config_yaml
 
-    String         docker = "quay.io/biocontainers/multiqc:1.8--py_2"
+    String         docker = "quay.io/biocontainers/multiqc:1.31--pyhdfd78af_0"
   }
 
   parameter_meta {
